@@ -8,6 +8,9 @@ import AVFoundation
 
 @MainActor
 class Camera: ObservableObject {
+    var photoDelegate: PhotoCaptureDelegate?
+    @Published var filter: String? = ""
+    
     internal let output = AVCapturePhotoOutput()
     internal let session = AVCaptureSession()
     
@@ -27,6 +30,12 @@ class Camera: ObservableObject {
     
     lazy var preview: (String) -> CameraPreview = { incomingFilter in
         CameraPreview(session: self.session, filter: incomingFilter)
+    }
+    
+    func capturePhoto() {
+        photoDelegate = PhotoCaptureDelegate(filter: filter)
+        let photoSettings = AVCapturePhotoSettings()
+        output.capturePhoto(with: photoSettings, delegate: photoDelegate!)
     }
     
     func start() async {

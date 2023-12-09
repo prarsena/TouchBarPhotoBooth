@@ -11,6 +11,13 @@ struct TouchBarView: View {
         ScrollView(.horizontal){
             HStack(){
                 Button(action: {
+                    camera.capturePhoto()
+                }, label: {
+                    Image(systemName: "camera")
+                }).touchBarItemPrincipal(true)
+                        .controlSize(.large)
+                
+                Button(action: {
                     previewPhotoEffect = "CISepiaTone"
                 }, label: {
                     camera.preview("CISepiaTone")

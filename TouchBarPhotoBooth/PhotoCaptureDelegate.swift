@@ -1,3 +1,4 @@
+// visit peterarsenault.industries
 import AVFoundation
 import SwiftUI
 import CoreImage
@@ -9,15 +10,6 @@ public class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
         self.filter = filter
         super.init()
     }
-    
-    /*
-    public func photoOutput(_ output: AVCapturePhotoOutput, willBeginCaptureFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
-        if let additionalData = filter {
-            print("Passed filter to photoDelegate \(additionalData)")
-            // Access other properties as needed
-        }
-    }
-    */
     
     func convertImageDataToFilteredImageData(data: Data, filter: String?) -> Data? {
         let image = NSImage(data: data)
@@ -74,18 +66,24 @@ public class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
     public func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         print("Finished processing photo.")
         guard let imageData = photo.fileDataRepresentation() else { return }
-        
-        guard let filteredImageData = convertImageDataToFilteredImageData(data: imageData, filter: filter) else { return }
+        NSSound(named: "Frog")?.play()
+        //guard let filteredImageData = convertImageDataToFilteredImageData(data: imageData, filter: filter) else { return }
         
         let picturesDir = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first!
-        let imagesPath = picturesDir.appendingPathComponent("PhotoBomb")
+        let imagesPath = picturesDir.appendingPathComponent("TouchBarPhotoBooth")
         
         do
         {
             try FileManager.default.createDirectory(atPath: imagesPath.path, withIntermediateDirectories: true, attributes: nil)
             let timestamp = NSDate().timeIntervalSince1970
-            let fileURL = imagesPath.appendingPathComponent("Selfie\(timestamp).jpg")
-            try? filteredImageData.write(to: fileURL)
+            let date = NSDate(timeIntervalSince1970:timestamp)
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd-HHmmss"
+            let humanReadableTimeStamp = formatter.string(from: date as Date)
+            
+            let fileURL = imagesPath.appendingPathComponent("Selfie\(humanReadableTimeStamp).jpg")
+            try? imageData.write(to: fileURL)
         }
         catch let error as NSError
         {

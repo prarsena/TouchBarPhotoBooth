@@ -6,9 +6,12 @@ struct ContentView: View {
     @State private var previewPhotoEffect = ""
     
     var body: some View {
-        HStack(){
-            camera.preview(previewPhotoEffect)
-                .frame(maxWidth: .infinity)
+        VStack(){
+            HStack(){
+                camera.preview(previewPhotoEffect)
+                    .frame(maxWidth: .infinity)
+            }
+            //TouchBarView(camera: camera, previewPhotoEffect: $previewPhotoEffect, w:70)
         }
         .padding()
         .focusable()
