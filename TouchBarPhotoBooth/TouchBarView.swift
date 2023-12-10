@@ -11,6 +11,7 @@ struct TouchBarView: View {
         ScrollView(.horizontal){
             HStack(){
                 Button(action: {
+                    camera.filter = previewPhotoEffect
                     camera.capturePhoto()
                 }, label: {
                     Image(systemName: "camera")
@@ -19,6 +20,7 @@ struct TouchBarView: View {
                 
                 Button(action: {
                     previewPhotoEffect = "CISepiaTone"
+                    //camera.filter = previewPhotoEffect
                 }, label: {
                     camera.preview("CISepiaTone")
                 }).frame(width:w, height:h)

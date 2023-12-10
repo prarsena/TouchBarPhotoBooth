@@ -66,8 +66,8 @@ public class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
     public func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         print("Finished processing photo.")
         guard let imageData = photo.fileDataRepresentation() else { return }
-        NSSound(named: "Frog")?.play()
-        //guard let filteredImageData = convertImageDataToFilteredImageData(data: imageData, filter: filter) else { return }
+        NSSound(named: "apple-camera-sound")?.play()
+        guard let filteredImageData = convertImageDataToFilteredImageData(data: imageData, filter: filter) else { return }
         
         let picturesDir = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first!
         let imagesPath = picturesDir.appendingPathComponent("TouchBarPhotoBooth")
@@ -83,7 +83,7 @@ public class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
             let humanReadableTimeStamp = formatter.string(from: date as Date)
             
             let fileURL = imagesPath.appendingPathComponent("Selfie\(humanReadableTimeStamp).jpg")
-            try? imageData.write(to: fileURL)
+            try? filteredImageData.write(to: fileURL)
         }
         catch let error as NSError
         {

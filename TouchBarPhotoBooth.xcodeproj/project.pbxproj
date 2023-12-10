@@ -16,6 +16,7 @@
 		C13196C42B0EDB37005C8B12 /* TouchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13196C32B0EDB37005C8B12 /* TouchBarView.swift */; };
 		C13196C82B0EF22B005C8B12 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C13196C72B0EF22B005C8B12 /* LICENSE */; };
 		C18F43A82B24E9CB00B21063 /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18F43A72B24E9CB00B21063 /* PhotoCaptureDelegate.swift */; };
+		C18F43AA2B256FFE00B21063 /* apple-camera-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C18F43A92B256FFE00B21063 /* apple-camera-sound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		C13196C32B0EDB37005C8B12 /* TouchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchBarView.swift; sourceTree = "<group>"; };
 		C13196C72B0EF22B005C8B12 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LICENSE; sourceTree = "<group>"; };
 		C18F43A72B24E9CB00B21063 /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
+		C18F43A92B256FFE00B21063 /* apple-camera-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "apple-camera-sound.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				C13196BD2B0ED9E2005C8B12 /* CameraPreview.swift */,
 				C18F43A72B24E9CB00B21063 /* PhotoCaptureDelegate.swift */,
 				C13196B22B0E9015005C8B12 /* Assets.xcassets */,
+				C18F43A92B256FFE00B21063 /* apple-camera-sound.mp3 */,
 				C13196B72B0E9015005C8B12 /* TouchBarPhotoBooth.entitlements */,
 				C13196C72B0EF22B005C8B12 /* LICENSE */,
 				C13196B42B0E9015005C8B12 /* Preview Content */,
@@ -142,6 +145,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C18F43AA2B256FFE00B21063 /* apple-camera-sound.mp3 in Resources */,
 				C13196C82B0EF22B005C8B12 /* LICENSE in Resources */,
 				C13196B62B0E9015005C8B12 /* Preview Assets.xcassets in Resources */,
 				C13196B32B0E9015005C8B12 /* Assets.xcassets in Resources */,
