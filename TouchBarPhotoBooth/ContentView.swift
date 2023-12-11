@@ -6,15 +6,18 @@ struct ContentView: View {
     @State private var previewPhotoEffect = ""
     
     var body: some View {
-        HStack(){
+        ZStack(){
             camera.preview(previewPhotoEffect)
+                .padding()
                 .frame(maxWidth: .infinity)
+            TextField("", text: $previewPhotoEffect)
+                .frame(width:0, height:0)
+                .focusable()
+                .touchBar(){
+                    TouchBarView(camera: camera, previewPhotoEffect: $previewPhotoEffect, w:70)
+                }
         }
-        .padding()
-        .focusable()
-        .touchBar(){
-            TouchBarView(camera: camera, previewPhotoEffect: $previewPhotoEffect, w:70)
-        }
+        .frame(maxWidth: .infinity)
         .onAppear {
             Task {
                 await camera.start()
