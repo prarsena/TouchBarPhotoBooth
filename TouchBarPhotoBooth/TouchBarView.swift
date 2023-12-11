@@ -16,6 +16,7 @@ struct TouchBarView: View {
                 }, label: {
                     Image(systemName: "camera")
                 }).touchBarItemPrincipal(true)
+                    .frame(width:w, height:h)
                         .controlSize(.large)
                 
                 Button(action: {
@@ -83,11 +84,11 @@ struct TouchBarView: View {
                     .controlSize(.large)
                 
                 Button(action: {
-                    previewPhotoEffect = "CIMorphologyGradient"
+                    NSApp.terminate(self)
                 }, label: {
-                    camera.preview("CIMorphologyGradient")
+                    Image(systemName: "xmark.circle")
                 }).frame(width:w, height:h)
-                    .controlSize(.large)
+                        .controlSize(.large)
             }.frame(minHeight: 0, maxHeight: .greatestFiniteMagnitude)
             
         }
