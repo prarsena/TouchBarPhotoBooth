@@ -1,13 +1,16 @@
 // visit peterarsenault.industries
 import SwiftUI
+import AppKit
 
 struct TouchBarView: View {
     var camera: Camera
     @Binding var previewPhotoEffect: String
     @State var w: CGFloat?
     @State var h: CGFloat?
-  
+    
     var body: some View {
+        
+        
         ScrollView(.horizontal){
             HStack(){
                 Button(action: {
@@ -84,13 +87,19 @@ struct TouchBarView: View {
                     .controlSize(.large)
                 
                 Button(action: {
+                    previewPhotoEffect = "CIMorphologyGradient"
+                }, label: {
+                    camera.preview("CIMorphologyGradient")
+                }).frame(width:w, height:h)
+                    .controlSize(.large)
+                
+                Button(action: {
                     NSApp.terminate(self)
                 }, label: {
                     Image(systemName: "xmark.circle")
                 }).frame(width:w, height:h)
                         .controlSize(.large)
-            }.frame(minHeight: 0, maxHeight: .greatestFiniteMagnitude)
-            
-        }
+            }
+        }.frame(minHeight: 0, maxHeight: .greatestFiniteMagnitude)
     }
 }
